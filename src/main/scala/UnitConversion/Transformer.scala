@@ -67,8 +67,8 @@ case object Velocity extends Quantity {
 case object Time extends Quantity {
     val symbol: String = "sec"
     def convertToSiUnit(unitSymbol: String, value: Double): Double = unitSymbol match {
-        case Seconds.symbol => value
-        case "min" => Seconds(value) to Seconds
+        case "sec" => value
+        case "min" => Minutes(value) to Seconds
         case Hours.symbol => Hours(value) to Seconds
     }
 }
@@ -86,7 +86,7 @@ class Sensor(sensorName: String, var unitSymbol: String, var value: Double){
         case s if s.equalsIgnoreCase("VPD") => Pressure
         case s if s.equalsIgnoreCase("Battery") => ElectricPotential
         case s if s.equalsIgnoreCase("Solar panel") => ElectricPotential
-        case s if s.equalsIgnoreCase("Percipitation") => Precipitation
+        case s if s.equalsIgnoreCase("Precipitation") => Precipitation
         case s if s.equalsIgnoreCase("HC Air temperature") => TemperatureScale
         case s if s.equalsIgnoreCase("DeltaT") => TemperatureScale
         case s if s.equalsIgnoreCase("Dew Point") => TemperatureScale
@@ -126,9 +126,9 @@ class Sensor(sensorName: String, var unitSymbol: String, var value: Double){
 }
 
 object TransformerRunner extends App {
-    val s1 = new Sensor("Air pressure", "mbar", 10.0)
+    val s1 = new Sensor("Air pressure", "kPa", 10.0)
     val s2 = new Sensor("Battery", "mV", 5.0)
-    val s3 = new Sensor("Percipitation", "yd", 10.0)
+    val s3 = new Sensor("Precipitation", "yd", 10.0)
     val s4 = new Sensor("Solar Panel", "mV", 7.0)
     val s5 = new Sensor("Air pressure", "mbar", 3.0)
     val s6 = new Sensor("Air pressure", "bar", 10.0)
@@ -140,7 +140,7 @@ object TransformerRunner extends App {
     val s12 = new Sensor("U-sonic wind speed", "yd/min", 15.0)
     val s13 = new Sensor("Leaf wetness", "h", 15.0)
 
-    println(s1.toString)
+    println(s1.toString, s1.unitSymbol)
     println(s2.toString)
     println(s3.toString)
     println(s4.toString)
