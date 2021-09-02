@@ -1,3 +1,5 @@
+import squants.energy.JoulesPerCubicMeter
+
 import squants.time.Minutes
 import squants._
 import squants.motion.VelocityConversions._
@@ -13,7 +15,7 @@ import squants.motion.{Pascals, Bars, KilogramsPerSecond, PoundsPerSquareInch}
 import squants.motion.MassFlowConversions._
 import squants.motion.PressureConversions._
 
-Minutes
+
 
 val power3: Power = 2.0.milliwatts
 val power4: Power = 2.0.megawatts

@@ -12,6 +12,7 @@ import squants.motion.Velocity._
 import squants.thermal.{Celsius, Fahrenheit}
 import squants.thermal.TemperatureConversions._
 import squants.time.{Seconds, Minutes, Hours}
+import squants.radio.{WattsPerSquareMeter}
 
 sealed trait Quantity
 case object Pressure extends Quantity {
@@ -64,6 +65,13 @@ case object Velocity extends Quantity {
         case Knots.symbol => Knots(value) to MetersPerSecond
     }
 }
+case object Irradiance extends Quantity {
+    val symbol: String = WattsPerSquareMeter.symbol
+    def convertToSiUnit(unitSymbol: String, value: Double): Double = unitSymbol match {
+        case WattsPerSquareMeter.symbol => value
+        case Fahrenheit.symbol => Fahrenheit(value) to Celsius
+    }
+}
 case object Time extends Quantity {
     val symbol: String = "sec"
     def convertToSiUnit(unitSymbol: String, value: Double): Double = unitSymbol match {
@@ -108,6 +116,7 @@ class Sensor(sensorName: String, var unitSymbol: String, var value: Double){
         case Precipitation => Precipitation.symbol
         case TemperatureScale => TemperatureScale.symbol
         case Velocity => Velocity.symbol
+        case Irradiance => Irradiance.symbol
         case Time => Time.symbol
     }
 
@@ -117,6 +126,7 @@ class Sensor(sensorName: String, var unitSymbol: String, var value: Double){
         case Precipitation => Precipitation.convertToSiUnit(unitSymbol, value)
         case TemperatureScale => TemperatureScale.convertToSiUnit(unitSymbol, value)
         case Velocity => Velocity.convertToSiUnit(unitSymbol, value)
+        case Irradiance => Irradiance.convertToSiUnit(unitSymbol, value)
         case Time => Time.convertToSiUnit(unitSymbol, value)
     }
 
