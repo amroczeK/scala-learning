@@ -1,5 +1,5 @@
 # About
-This repository is an accumulation of coding practice and learning of Scala from tutorials and coursework.
+This repository is an accumulation of coding practice and learning of Scala from tutorials, coursework and deep diving into popular libraries.
 
 ### Resources
 I found these resources extremely useful in fast tracking and fundamental and practical knowledge of Scala.
