@@ -1,5 +1,4 @@
 import org.scalatest.funsuite.AnyFunSuite
-import javax.xml.transform.Transformer
 import UnitConversion.Sensor
 import UnitConversion.{Pressure, ElectricPotential, Precipitation, TemperatureScale, Velocity, Time}
 
